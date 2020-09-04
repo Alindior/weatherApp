@@ -6,57 +6,51 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
-import {getWindDirection, getCelsiusTemperature} from "../utils";
+import { getWindDirection, getCelsiusTemperature } from "../../utils";
 
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             maxWidth: 400,
-            backgroundColor : "#abe39f"
+            backgroundColor: "#abe39f"
         },
-        icon : {
-            width : 100,
-            height : 100,
-            objectFit : "cover"
+        icon: {
+            width: 100,
+            height: 100,
+            objectFit: "cover"
         },
-        weather__info : {
-            height : '70px',
-            display : "flex",
-            flexDirection : "column",
-            justifyContent : "space-between",
-            fontWeight : "bold",
-            fontSize : 18
+        weather__info: {
+            height: '70px',
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            fontWeight: "bold",
+            fontSize: 18
         },
-        weather__wind : {
-            display : "flex",
+        weather__wind: {
+            display: "flex",
             justifyContent: "space-around"
         }
     }),
 );
 
 interface CurrentWeatherProps {
-    city:any,
-    weather:any
+    currentWeather: any
 }
 
-export const CurrentWeather = ({city, weather}:CurrentWeatherProps)=> {
-    const {dt_txt, main : {temp_max, temp_min}, wind : {deg, speed}} = weather;
+export const WeatherToday = ({ currentWeather }: CurrentWeatherProps) => {
+    const { list, city: { name } } = currentWeather;
+    const { dt_txt, main: { temp_max, temp_min }, weather, wind: { deg, speed } } = list[0];
     const classes = useStyles();
-    const [expanded, setExpanded] = React.useState(false);
-
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
-
     return (
         <Card className={classes.root}>
             <CardHeader
-                title={city}
+                title={name}
                 subheader={dt_txt}
             />
             <CardMedia>
-                <img src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt="icon" className={classes.icon}/>
+                <img src={`http://openweathermap.org/img/w/${weather[0].icon}.png`} alt="icon" className={classes.icon} />
             </CardMedia>
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="div">

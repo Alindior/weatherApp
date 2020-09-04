@@ -1,24 +1,15 @@
 import React from 'react';
 import "./styles/index.scss";
-import {Container} from '@material-ui/core';
+import { Container } from '@material-ui/core';
 
-import {SearchAppBar} from "./components/Header";
-import {Main} from "./components/Main";
-
-interface IApp {
-    title?: string,
-    children?: React.ReactNode
-}
+import { MainContainer } from "./containers/MainContainer";
 
 
-
-function App({title}: IApp) {
+export const App = () => {
     return (
         <Container className="container">
-            <SearchAppBar/>
-            <Main/>
+            <MainContainer />
         </Container>
     );
 }
 
-export default App;
