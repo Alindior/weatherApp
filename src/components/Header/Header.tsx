@@ -28,9 +28,11 @@ export const Header = ({ onSearch }: HeaderProps) => {
                         </div>
                         <InputBase
                             onChange={onChangeInput}
+                            value={inputValue}
                             onKeyPress={(e) => {
                                 if (e.key === "Enter") {
-                                    onSearch(inputValue)
+                                    onSearch(inputValue);
+                                    setInputValue("");
                                 }
                             }}
                             placeholder="City..."

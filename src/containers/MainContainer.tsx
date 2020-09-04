@@ -7,20 +7,21 @@ import { getWeather, setCurrentCity, deleteHistoryItem } from "../store/weather/
 
 export const MainContainer = () => {
  const dispatch = useDispatch();
- const { currentCity, history } = useSelector((state: any) => state.weather);
+ const { currentCity, history, error } = useSelector((state: any) => state.weather);
  const onSearchCity = (city: string) => {
   dispatch(getWeather(city));
  }
  const removeHostoryItem = (index: number) => {
   dispatch(deleteHistoryItem(index));
  }
- const setCurrentHistoryItem = (historyItem: object) => {
+ const setCurrentHistoryItem = (historyItem: any) => {
   dispatch(setCurrentCity(historyItem));
  }
  return (
   <>
    <Header onSearch={onSearchCity} />
    <Content
+    error={error}
     currentCity={currentCity}
     history={history}
     onSelectCity={setCurrentHistoryItem}

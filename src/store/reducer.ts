@@ -1,3 +1,3 @@
 import weather from "./weather/reducer";
 
-export {weather};
+export { weather };

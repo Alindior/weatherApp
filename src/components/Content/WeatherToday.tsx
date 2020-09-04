@@ -12,7 +12,7 @@ import { getWindDirection, getCelsiusTemperature } from "../../utils";
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
-            maxWidth: 400,
+            width: "100%",
             backgroundColor: "#abe39f"
         },
         icon: {

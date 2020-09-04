@@ -1,11 +1,12 @@
-import { Actions } from "./ActionTypes";
+import { Actions, IweatherState, WeatherActionTypes } from "./ActionTypes";
 
-const initialState = {
+const initialState: IweatherState = {
     currentCity: null,
-    history: []
+    history: [],
+    error: null
 }
 
-export default (state = initialState, action: any) => {
+export default (state = initialState, action: WeatherActionTypes) => {
     switch (action.type) {
         case Actions.GET_WEATHERS:
             return { ...state, currentCity: action.payload }
@@ -21,6 +22,10 @@ export default (state = initialState, action: any) => {
                     }
                 })
             }
+        case Actions.SHOW_ERROR:
+            return { ...state, error: action.payload }
+        case Actions.HIDE_ERROR:
+            return { ...state, error: null }
         default:
             return state;
     }
