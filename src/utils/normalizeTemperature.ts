@@ -1,3 +1,6 @@
-export const getCelsiusTemperature = (degrees:any) => {
-    return Math.floor(degrees - 273.15);
-}
+export const getCelsiusTemperature = (...args: number[]) => {
+  if (args.length !== 1) {
+    throw new Error("Invalid number of params.");
+  }
+  return Math.floor(args[0] - 273.15);
+};

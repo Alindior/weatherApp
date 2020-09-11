@@ -1,18 +1,22 @@
-export const getWindDirection = (deg: any) => {
+export const getWindDirection = (...args: number[]) => {
+    if (args.length !== 1) {
+        throw new Error("Invalid number of parametrs.");
+    } else if (args[0] > 360 || args[0] < 0) {
+        throw new Error("The value must be between 0 and 360 degrees.");
+    }
     let windDirection = null;
     switch (true) {
-        case (deg < 90):
-            console.log("hello")
+        case (args[0] < 90):
             windDirection = "North-East";
             break;
-        case (deg < 180) :
+        case (args[0] < 180):
             windDirection = "South-East";
             break;
-        case (deg < 270) :
+        case (args[0] < 270):
             windDirection = "South-West";
             break;
-        case (deg < 360):
-            windDirection =  "North-West";
+        case (args[0] < 360):
+            windDirection = "North-West";
     }
     return windDirection;
 }

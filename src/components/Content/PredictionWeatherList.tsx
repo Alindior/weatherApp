@@ -1,12 +1,11 @@
 import React from "react";
-import { PredictionItem } from "./PredictionWeatherItem";
+import { PredictionItem } from "./PredictionItem";
 
-interface PredictionWeatherListProps {
- predictions: any,
- children?: React.ReactNode
+interface IPredictionWeatherListProps {
+ predictions: any;
 }
 
-export const PredictionWeatherList = ({ predictions }: PredictionWeatherListProps) => {
+export const PredictionWeatherList = ({ predictions }: IPredictionWeatherListProps) => {
  return (
   predictions.map((item: any, index: number) => {
    if (index % 8 === 0) {
